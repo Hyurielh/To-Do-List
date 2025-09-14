@@ -75,7 +75,7 @@ function loadTasks() {
 
         listTask.append(span);
         checkedList.checked = tarea.completed;
-         if (tarea.completed) { listTask.classList.add('taskCompleted'); }
+         if (tarea.completed) { span.classList.add('taskCompleted'); }
          listTask.append(checkedList)
          listTask.append(btnlistTask)
          list.append(listTask)
