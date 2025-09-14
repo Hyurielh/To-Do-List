@@ -24,16 +24,19 @@ function addTask() {
     localStorage.setItem('arrayTasks', JSON.stringify(arrayTasks));
     
        let listTask = document.createElement('li');
+       let span = document.createElement('span');
        let checklistTask = document.createElement('input');
        let btnlistTask = document.createElement('button');
        
+       span.textContent = task;
        checklistTask.setAttribute('type', 'checkbox');
        btnlistTask.textContent = 'Eliminar';
-       listTask.textContent = task;
+       
 
        btnlistTask.addEventListener('click', deleteTask);
        checklistTask.addEventListener('click', completeTask);
-
+       
+       listTask.append(span);
        list.append(listTask);
        listTask.append(checklistTask);
        listTask.append(btnlistTask);
@@ -56,7 +59,7 @@ let taskText = this.parentNode.querySelector('span').textContent;
 let indice = arrayTasks.findIndex(tarea => tarea.task === taskText);
 arrayTasks[indice].completed = !arrayTasks[indice].completed;
 localStorage.setItem('arrayTasks', JSON.stringify(arrayTasks));
-this.parentNode.classList.toggle('taskCompleted');
+this.parentNode.querySelector('span').classList.toggle('taskCompleted');
 }
 
 function loadTasks() {
