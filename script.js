@@ -9,7 +9,7 @@ buttonTask.addEventListener('click', addTask);
 
 function addTask() {
 
-    let task = inputTask.value;
+    let task = inputTask.value.trim();
     
     if (task === '' ) {
         alert('Por favor agregue una tarea');
