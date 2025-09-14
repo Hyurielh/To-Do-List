@@ -11,8 +11,11 @@ function addTask() {
 
     let task = inputTask.value;
     
-    if (task === '') {
+    if (task === '' ) {
         alert('Por favor agregue una tarea');
+    }
+    else if (arrayTasks.some(tarea => tarea.task === task)) {
+        alert('La tarea ya existe');
     }
     else
     {
