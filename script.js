@@ -25,25 +25,8 @@ function addTask() {
 
     arrayTasks.push(newTask);
     localStorage.setItem('arrayTasks', JSON.stringify(arrayTasks));
-    
-       let listTask = document.createElement('li');
-       let span = document.createElement('span');
-       let checklistTask = document.createElement('input');
-       let btnlistTask = document.createElement('button');
-       
-       span.textContent = task;
-       checklistTask.setAttribute('type', 'checkbox');
-       btnlistTask.textContent = 'Eliminar';
-       
-
-       btnlistTask.addEventListener('click', deleteTask);
-       checklistTask.addEventListener('click', completeTask);
-       
-       listTask.append(span);
-       list.append(listTask);
-       listTask.append(checklistTask);
-       listTask.append(btnlistTask);
-       inputTask.value = '';
+    renderTask(newTask);
+     inputTask.value = '';
     }
    
 }
@@ -67,28 +50,37 @@ this.parentNode.querySelector('span').classList.toggle('taskCompleted');
 
 function loadTasks() {
     arrayTasks.forEach(tarea => {
-        let listTask = document.createElement('li');
-        let checkedList = document.createElement('input');
-        let btnlistTask = document.createElement('button');
-        let span = document.createElement('span');
-        span.textContent = tarea.task;
-        
-        checkedList.setAttribute('type', 'checkbox');
-        btnlistTask.textContent = 'Eliminar';
-
-        listTask.append(span);
-        checkedList.checked = tarea.completed;
-         if (tarea.completed) { span.classList.add('taskCompleted'); }
-         listTask.append(checkedList)
-         listTask.append(btnlistTask)
-         list.append(listTask)
-
-        btnlistTask.addEventListener('click', deleteTask)
-        checkedList.addEventListener('click', completeTask)
-
+        renderTask(tarea);
     });
    
 }
+
+function renderTask(taskObject) {
+    console.log(taskObject);
+     let listTask = document.createElement('li');
+       let span = document.createElement('span');
+       let checklistTask = document.createElement('input');
+       let btnlistTask = document.createElement('button');
+       
+       span.textContent = taskObject.task;
+       checklistTask.setAttribute('type', 'checkbox');
+       btnlistTask.textContent = 'Eliminar';
+       
+       if (taskObject.completed) {
+        span.classList.add('taskCompleted');
+        checklistTask.checked = true;
+       }
+
+       btnlistTask.addEventListener('click', deleteTask);
+       checklistTask.addEventListener('click', completeTask);
+       
+       listTask.append(span);
+       listTask.append(checklistTask);
+       listTask.append(btnlistTask);
+       list.append(listTask);
+
+}
+
 loadTasks();
 
 
