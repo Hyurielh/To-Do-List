@@ -57,27 +57,27 @@ function loadTasks() {
 
 function renderTask(taskObject) {
     console.log(taskObject);
-     let listTask = document.createElement('li');
+     let liTask = document.createElement('li');
        let span = document.createElement('span');
-       let checklistTask = document.createElement('input');
-       let btnlistTask = document.createElement('button');
+       let checkbox = document.createElement('input');
+       let btnliTask = document.createElement('button');
        
        span.textContent = taskObject.task;
-       checklistTask.setAttribute('type', 'checkbox');
-       btnlistTask.textContent = 'Eliminar';
+       checkbox.setAttribute('type', 'checkbox');
+       btnliTask.textContent = 'Eliminar';
        
        if (taskObject.completed) {
         span.classList.add('taskCompleted');
-        checklistTask.checked = true;
+        checkbox.checked = true;
        }
 
-       btnlistTask.addEventListener('click', deleteTask);
-       checklistTask.addEventListener('click', completeTask);
+       btnliTask.addEventListener('click', deleteTask);
+       checkbox.addEventListener('click', completeTask);
        
-       listTask.append(span);
-       listTask.append(checklistTask);
-       listTask.append(btnlistTask);
-       list.append(listTask);
+       liTask.append(span);
+       liTask.append(checkbox);
+       liTask.append(btnliTask);
+       list.append(liTask);
 
 }
 
