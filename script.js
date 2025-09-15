@@ -56,7 +56,6 @@ function loadTasks() {
 }
 
 function renderTask(taskObject) {
-    console.log(taskObject);
      let liTask = document.createElement('li');
        let span = document.createElement('span');
        let checkbox = document.createElement('input');
